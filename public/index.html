@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字雲 - Word Cloud</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☁️ 文字雲</h1>
+            <p class="subtitle">輸入你的想法，看看大家最在乎什麼</p>
+        </header>
+
+        <main>
+            <!-- 輸入區 -->
+            <section class="input-section">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="wordInput"
+                        placeholder="輸入一個詞語..."
+                        maxlength="20"
+                        autocomplete="off"
+                    >
+                    <button id="submitBtn" type="submit">提交</button>
+                </div>
+                <div class="char-count">
+                    <span id="charCount">0</span>/20
+                </div>
+            </section>
+
+            <!-- 統計資訊 -->
+            <section class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">總詞數</span>
+                    <span class="stat-value" id="totalWords">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">投稿數</span>
+                    <span class="stat-value" id="totalCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">狀態</span>
+                    <span class="stat-value" id="status">正在連接...</span>
+                </div>
+            </section>
+
+            <!-- 文字雲容器 -->
+            <section class="cloud-section">
+                <div id="cloudContainer" class="cloud-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>載入文字雲中...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 最新投稿 -->
+            <section class="recent-section">
+                <h3>最新投稿</h3>
+                <ul id="recentList" class="recent-list">
+                    <li class="empty">暫無投稿</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>使用 Firebase Firestore + WordCloud 製作</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+
+    <!-- WordCloud2.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
+
+    <!-- 應用程式 -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(firebase projects:list)",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(firebase --version)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx -y firebase-tools@latest --version)",
+      "Bash(npm cache:*)",
+      "Bash(rm -rf /Users/mac/.npm-global/lib/node_modules/firebase-tools /Users/mac/.npm-global/lib/node_modules/.firebase-tools-*)",
+      "Read(//Users/mac/.npm-global/lib/node_modules/**)",
+      "Bash(chmod +x /Users/mac/.npm-global/bin/firebase)",
+      "Bash(firebase deploy:*)",
+      "Bash(claude mcp:*)",
+      "Bash(unset CLAUDECODE)",
+      "Bash(node init-firestore.js)",
+      "Bash(firebase auth:list)",
+      "mcp__firebase__firebase_get_environment",
+      "mcp__firebase__firestore_add_document",
+      "mcp__firebase__firestore_list_documents",
+      "mcp__firebase__firestore_query_collection",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'Initial commit: Add Firebase wordcloud web application:*)"
+    ]
+  }
+}

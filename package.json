@@ -1,0 +1,12 @@
+{
+  "name": "firebase-firestore-test",
+  "version": "1.0.0",
+  "description": "Firestore test data initialization",
+  "main": "init-firestore.js",
+  "scripts": {
+    "start": "node init-firestore.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
