@@ -1,11 +1,11 @@
 // Firebase 初始化配置
 const firebaseConfig = {
-    apiKey: "AIzaSyD7K9X_example",
+    apiKey: "AIzaSyCxLzEwLkosqlY5SzGWJRsTROv3hZGdRkg",
     authDomain: "itstudy-5bba9.firebaseapp.com",
     projectId: "itstudy-5bba9",
     storageBucket: "itstudy-5bba9.firebasestorage.app",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdefg"
+    messagingSenderId: "1047292165946",
+    appId: "1:1047292165946:web:9324f356685aed9c9eda03"
 };
 
 // 初始化 Firebase
