@@ -64,28 +64,28 @@ async function submitWord() {
         submitBtn.disabled = true;
         submitBtn.textContent = '提交中...';
 
-        // 查詢該詞是否已存在
-        const query = await db.collection('wordcloud_words')
-            .where('word', '==', word)
-            .get();
+        // 用詞語本身當 document ID，徹底防止重複 + 避免 race condition
+        const docRef = db.collection('wordcloud_words').doc(word);
 
-        if (query.empty) {
-            // 新詞，建立文件
-            await db.collection('wordcloud_words').add({
-                word: word,
-                count: 1,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            showNotification(`新詞「${word}」已添加！`, 'success');
-        } else {
-            // 詞已存在，增加計數
-            const docId = query.docs[0].id;
-            await db.collection('wordcloud_words').doc(docId).update({
-                count: firebase.firestore.FieldValue.increment(1),
-                lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            showNotification(`「${word}」投稿成功！`, 'success');
-        }
+        await db.runTransaction(async (transaction) => {
+            const doc = await transaction.get(docRef);
+            if (!doc.exists) {
+                // 新詞，建立文件
+                transaction.set(docRef, {
+                    word: word,
+                    count: 1,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } else {
+                // 已存在，增加計數
+                transaction.update(docRef, {
+                    count: firebase.firestore.FieldValue.increment(1),
+                    lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            }
+        });
+
+        showNotification(`「${word}」投稿成功！`, 'success');
 
         // 清空輸入
         wordInput.value = '';
