@@ -182,7 +182,7 @@ function renderCloud() {
         rotateRatio: 0.3,
         rotationSteps: 2,
         backgroundColor: '#f8f9fa',
-        minSize: [12, 40],
+        minSize: 12,
         weightFactor: (size) => {
             return Math.pow(size / allWords[0][1], 1.2) * 80;
         },
